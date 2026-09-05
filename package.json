@@ -1,0 +1,20 @@
+{
+  "name": "nixalor-hub",
+  "packageManager": "yarn@4.12.0",
+  "dependencies": {
+    "tsx": "4.22.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.0.0",
+    "@types/node": "26.1.0",
+    "@vitest/coverage-v8": "2.0.0",
+    "eslint": "9.0.0",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-import": "2.29.0",
+    "eslint-plugin-prettier": "5.0.0",
+    "eslint-plugin-unused-imports": "4.0.0",
+    "prettier": "3.0.0",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "8.0.0"
+  }
+}
