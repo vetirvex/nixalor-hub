@@ -1,5 +1,7 @@
 {
   "name": "nixalor-hub",
+  "description": "Site Fleet Manager",
+  "type": "module",
   "packageManager": "yarn@4.12.0",
   "dependencies": {
     "tsx": "4.22.4",
@@ -23,7 +25,6 @@
   },
   "workspaces": [
     "packages/*",
-    "packages/*/*",
-    "packages/*/*/*"
+    "packages/services/*"
   ]
 }
