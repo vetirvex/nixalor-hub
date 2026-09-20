@@ -767,9 +767,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nh/auth-service@workspace:packages/services/auth-service":
+"@nixalor/auth-service@workspace:packages/services/auth-service":
   version: 0.0.0-use.local
-  resolution: "@nh/auth-service@workspace:packages/services/auth-service"
+  resolution: "@nixalor/auth-service@workspace:packages/services/auth-service"
   dependencies:
     "@fastify/type-provider-zod": "npm:^1.0.0"
     "@types/bcrypt": "npm:^6"

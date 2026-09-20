@@ -1,4 +1,5 @@
 import { prompt } from "trompt";
+import { executeServer } from "./executeServer";
 import { loadConfigFromCache } from "./loadConfigFromCache";
 import { Config } from "./model";
 import { receiveConfigFromUser } from "./receiveConfigFromUser";
@@ -21,6 +22,15 @@ const main = async () => {
     config = await receiveConfigFromUser();
     await saveConfigToCache(config);
   }
+
+  await executeServer(config);
 };
 
-main();
+main()
+  .then(() => {
+    process.exit(0);
+  })
+  .catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });

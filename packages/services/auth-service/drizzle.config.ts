@@ -6,7 +6,7 @@ export default defineConfig({
   schema: "./src/database/database.schema.ts",
   out: "./src/database/migrations",
   dbCredentials: {
-    url: process.env.DATABASE_URL!,
+    url: process.env.AUTH_SERVICE_DATABASE_URL!,
   },
   verbose: true,
   strict: true,

@@ -1,8 +1,8 @@
 import { randomUUID } from "node:crypto";
-import * as fs from "node:fs";
 import { prompt } from "trompt";
 import { z } from "zod";
-import { type Config, ENV_CONFIG, LOCAL_CONFIG_FILE_PATH, parseConfig } from "./model";
+import { loadFromLocalEnv } from "./loadFromLocalEnv";
+import { type Config, ENV_CONFIG, parseConfig } from "./model";
 
 type ConfigKey = keyof Config;
 
@@ -60,12 +60,7 @@ const receiveConfigFromUser = async (): Promise<Config> => {
     return parseConfig(draft);
   }
 
-  if (!fs.existsSync(LOCAL_CONFIG_FILE_PATH)) {
-    throw new Error("Cannot load config from cache. File does not exist");
-  }
-
-  const configFileData = await fs.promises.readFile(LOCAL_CONFIG_FILE_PATH, "utf8");
-  return parseConfig(JSON.parse(configFileData));
+  return await loadFromLocalEnv();
 };
 
 export { receiveConfigFromUser };

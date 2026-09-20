@@ -1,5 +1,5 @@
 {
-  "name": "@nh/auth-service",
+  "name": "@nixalor/auth-service",
   "private": true,
   "type": "module",
   "scripts": {
