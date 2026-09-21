@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import { JwtService } from "../jwt/jwt.service";
 import { UsersService } from "../users/users.service";
+import { InvalidCredentialError } from "./app.error";
 
 class AuthService {
   constructor(
@@ -12,11 +13,11 @@ class AuthService {
     const candidate = await this.usersService.findUserByEmail(email);
 
     if (!candidate) {
-      throw new Error(`User ${email} not found`);
+      throw new InvalidCredentialError();
     }
 
     if (!bcrypt.compareSync(candidate.password, password)) {
-      throw new Error(`Invalid password: ${password}`);
+      throw new InvalidCredentialError();
     }
 
     await this.jwtService.revokeUserTokens(candidate.id);
