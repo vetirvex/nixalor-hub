@@ -36,6 +36,17 @@ const registerSchema = {
   }),
 };
 
+const refreshSchema = {
+  body: z.object({
+    refreshToken: z
+      .string("Refresh token cannot be empty")
+      .regex(
+        /^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/,
+        "Invalid refresh token format"
+      ),
+  }),
+};
+
 type LoginBody = z.infer<typeof loginSchema.body>;
 type LoginResponse = Tokens & {
   user: SafeUser;
@@ -45,12 +56,18 @@ type RegisterResponse = Tokens & {
   user: SafeUser;
 };
 
+type RefreshBody = z.infer<typeof refreshSchema.body>;
+type RefreshResponse = Tokens;
+
 export {
   loginSchema,
   registerSchema,
+  refreshSchema,
   type LoginBody,
   type LoginResponse,
   type RegisterBody,
   type RegisterResponse,
+  type RefreshBody,
+  type RefreshResponse,
   type SafeUser,
 };

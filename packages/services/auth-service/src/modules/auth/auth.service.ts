@@ -2,8 +2,13 @@ import bcrypt from "bcrypt";
 import { database } from "../../database/database";
 import { JwtService } from "../jwt/jwt.service";
 import { UsersService } from "../users/users.service";
-import { InvalidCredentialError, UserAlreadyExistsError } from "./auth.error";
-import { LoginResponse, RegisterResponse } from "./auth.schema";
+import {
+  InvalidCredentialError,
+  InvalidTokenError,
+  TokenExpiredError,
+  UserAlreadyExistsError,
+} from "./auth.error";
+import { LoginResponse, RefreshResponse, RegisterResponse } from "./auth.schema";
 
 class AuthService {
   constructor(
@@ -64,6 +69,24 @@ class AuthService {
         },
       };
     });
+  }
+
+  async refresh(refreshToken: string): Promise<RefreshResponse> {
+    await this.jwtService.verifyRefreshToken(refreshToken);
+    const candidate = await this.jwtService.getTokenByRefreshToken(refreshToken);
+
+    if (!candidate) {
+      throw new InvalidTokenError();
+    }
+
+    if (Date.now() >= candidate.expiresAt.getTime()) {
+      await this.jwtService.deleteToken(candidate.id);
+      throw new TokenExpiredError();
+    }
+
+    const tokens = this.jwtService.generateJWT(candidate.userId);
+    await this.jwtService.saveRefreshToken(candidate.userId, tokens.refreshToken);
+    return tokens;
   }
 }
 

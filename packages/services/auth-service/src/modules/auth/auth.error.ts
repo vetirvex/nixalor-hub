@@ -12,4 +12,21 @@ class UserAlreadyExistsError extends ServiceError {
   }
 }
 
-export { InvalidCredentialError, UserAlreadyExistsError };
+class TokenExpiredError extends ServiceError {
+  constructor(params?: ErrorParams) {
+    super("Token expired", 400, "TokenExpired", params);
+  }
+}
+
+class InvalidTokenError extends ServiceError {
+  constructor(params?: ErrorParams) {
+    super("Invalid token", 400, "InvalidToken", params);
+  }
+}
+
+export {
+  InvalidCredentialError,
+  UserAlreadyExistsError,
+  TokenExpiredError,
+  InvalidTokenError,
+};

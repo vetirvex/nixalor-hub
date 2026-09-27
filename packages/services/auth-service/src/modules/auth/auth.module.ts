@@ -2,7 +2,7 @@ import { FastifyInstance } from "fastify";
 import { JwtService } from "../jwt/jwt.service";
 import { UsersService } from "../users/users.service";
 import { AuthController } from "./auth.controller";
-import { loginSchema, registerSchema } from "./auth.schema";
+import { loginSchema, refreshSchema, registerSchema } from "./auth.schema";
 import { AuthService } from "./auth.service";
 
 const AUTH_URL_PREFIX = "/auth";
@@ -16,6 +16,11 @@ const authModule = (app: FastifyInstance) => {
     `${AUTH_URL_PREFIX}/register`,
     { schema: registerSchema },
     authController.register
+  );
+  app.post(
+    `${AUTH_URL_PREFIX}/refresh`,
+    { schema: refreshSchema },
+    authController.refresh
   );
 };
 
