@@ -1,7 +1,8 @@
+import { eq } from "drizzle-orm";
 import jwt from "jsonwebtoken";
 import type { StringValue } from "ms";
 import ms from "ms";
-import { database } from "../../database/database";
+import { database, DB } from "../../database/database";
 import { NewTokenDB, tokensTable } from "../../database/database.schema";
 import {
   JWT_ACCESS_TOKEN_EXPIRES_IN,
@@ -25,13 +26,26 @@ class JwtService {
     return { accessToken, refreshToken };
   }
 
-  async saveRefreshToken(userId: string, refreshToken: string) {
-    const token: NewTokenDB = {
-      userId,
-      refreshToken,
-      expiresAt: new Date(Date.now() + ms(JWT_REFRESH_TOKEN_EXPIRES_IN)),
-    };
-    await database.insert(tokensTable).values(token);
+  async saveRefreshToken(userId: string, refreshToken: string, db: DB = database) {
+    const expiresAt = new Date(Date.now() + ms(JWT_REFRESH_TOKEN_EXPIRES_IN));
+
+    const candidate = (
+      await db.select().from(tokensTable).where(eq(tokensTable.userId, userId))
+    )[0];
+
+    if (candidate) {
+      await db
+        .update(tokensTable)
+        .set({ refreshToken, expiresAt })
+        .where(eq(tokensTable.userId, userId));
+    } else {
+      const token: NewTokenDB = {
+        userId,
+        refreshToken,
+        expiresAt,
+      };
+      await db.insert(tokensTable).values(token);
+    }
   }
 }
 
