@@ -626,19 +626,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fastify/middie@npm:^9.3.4":
-  version: 9.3.4
-  resolution: "@fastify/middie@npm:9.3.4"
-  dependencies:
-    "@fastify/error": "npm:^4.0.0"
-    fastify-plugin: "npm:^6.0.0"
-    find-my-way: "npm:^9.5.0"
-    path-to-regexp: "npm:^8.1.0"
-    reusify: "npm:^1.0.4"
-  checksum: 10c0/829398775e16ec5fc5cc9727b01f4ab1d907f193ce0e3840a87df9844f0afed7aedffee79dda4b21e87331c78bdcbf1283f2185b251f1a0a308e0903edf0ab23
-  languageName: node
-  linkType: hard
-
 "@fastify/proxy-addr@npm:^5.0.0":
   version: 5.1.0
   resolution: "@fastify/proxy-addr@npm:5.1.0"
@@ -784,10 +771,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nixalor/auth-service@workspace:packages/services/auth-service"
   dependencies:
-    "@fastify/middie": "npm:^9.3.4"
     "@fastify/type-provider-zod": "npm:^1.0.0"
     "@types/bcrypt": "npm:^6"
     "@types/jsonwebtoken": "npm:^9"
+    "@types/ms": "npm:^2"
     "@types/pg": "npm:^8.23.1"
     bcrypt: "npm:^6.0.0"
     dotenv: "npm:^17.4.2"
@@ -795,6 +782,7 @@ __metadata:
     drizzle-orm: "npm:1.0.0-rc.4"
     fastify: "npm:^5.12.3"
     jsonwebtoken: "npm:^9.0.3"
+    ms: "npm:^2.1.3"
     pg: "npm:^8.23.0"
     pino-pretty: "npm:^13.1.3"
     trompt: "npm:^1.0.1"
@@ -877,7 +865,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ms@npm:*":
+"@types/ms@npm:*, @types/ms@npm:^2":
   version: 2.1.0
   resolution: "@types/ms@npm:2.1.0"
   checksum: 10c0/5ce692ffe1549e1b827d99ef8ff71187457e0eb44adbae38fdf7b9a74bae8d20642ee963c14516db1d35fa2652e65f47680fdf679dcbde52bbfadd021f497225
@@ -2546,13 +2534,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fastify-plugin@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "fastify-plugin@npm:6.0.0"
-  checksum: 10c0/4d9207efcbb0e6e8bd849eb8e00b097ae2d73590b1499f51d0bed135d08664e19d9428f2e8fc1a126b55ec4d2ac011dbcc72e753c255c46a751d6d34b57e5d4f
-  languageName: node
-  linkType: hard
-
 "fastify@npm:^5.12.3":
   version: 5.12.3
   resolution: "fastify@npm:5.12.3"
@@ -2624,7 +2605,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"find-my-way@npm:^9.5.0, find-my-way@npm:^9.6.0":
+"find-my-way@npm:^9.6.0":
   version: 9.9.0
   resolution: "find-my-way@npm:9.9.0"
   dependencies:
@@ -4125,13 +4106,6 @@ __metadata:
     lru-cache: "npm:^10.2.0"
     minipass: "npm:^5.0.0 || ^6.0.2 || ^7.0.0"
   checksum: 10c0/32a13711a2a505616ae1cc1b5076801e453e7aae6ac40ab55b388bb91b9d0547a52f5aaceff710ea400205f18691120d4431e520afbe4266b836fadede15872d
-  languageName: node
-  linkType: hard
-
-"path-to-regexp@npm:^8.1.0":
-  version: 8.4.2
-  resolution: "path-to-regexp@npm:8.4.2"
-  checksum: 10c0/05b115c49b47ad252ce05faa32930f643f23769c68b8bcfe78ad833545140c48bbffb3266986d6c8d5db13a64cf12e07e0d72d9882cab830efeefa553533ebaf
   languageName: node
   linkType: hard
 

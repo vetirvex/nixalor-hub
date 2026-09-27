@@ -10,7 +10,7 @@ const errorMiddleware = (
     return reply.status(error.statusCode).send({
       status: error.statusCode,
       message: error.message,
-      type: error.type,
+      code: error.code,
       params: error.params,
     });
   }

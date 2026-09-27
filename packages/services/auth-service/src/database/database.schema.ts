@@ -20,9 +20,9 @@ const tokensTable = pgTable("tokens", {
 });
 
 type UserDB = typeof usersTable.$inferSelect;
-type NewUserDB = typeof usersTable.$inferSelect;
+type NewUserDB = typeof usersTable.$inferInsert;
 type TokenDB = typeof tokensTable.$inferSelect;
-type NewTokenDB = typeof tokensTable.$inferSelect;
+type NewTokenDB = typeof tokensTable.$inferInsert;
 
 export {
   usersTable,

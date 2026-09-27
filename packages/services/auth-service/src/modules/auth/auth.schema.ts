@@ -1,4 +1,11 @@
 import { z } from "zod";
+import { Tokens } from "../jwt/jwt.schema";
+
+type SafeUser = {
+  id: string;
+  email: string;
+  name: string;
+};
 
 const loginSchema = {
   body: z.object({
@@ -30,6 +37,20 @@ const registerSchema = {
 };
 
 type LoginBody = z.infer<typeof loginSchema.body>;
+type LoginResponse = Tokens & {
+  user: SafeUser;
+};
 type RegisterBody = z.infer<typeof registerSchema.body>;
+type RegisterResponse = Tokens & {
+  user: SafeUser;
+};
 
-export { loginSchema, registerSchema, type LoginBody, type RegisterBody };
+export {
+  loginSchema,
+  registerSchema,
+  type LoginBody,
+  type LoginResponse,
+  type RegisterBody,
+  type RegisterResponse,
+  type SafeUser,
+};

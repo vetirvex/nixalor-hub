@@ -6,4 +6,10 @@ class InvalidCredentialError extends ServiceError {
   }
 }
 
-export { InvalidCredentialError };
+class UserAlreadyExistsError extends ServiceError {
+  constructor(params?: ErrorParams) {
+    super("Email is already taken", 409, "UserAlreadyExists", params);
+  }
+}
+
+export { InvalidCredentialError, UserAlreadyExistsError };

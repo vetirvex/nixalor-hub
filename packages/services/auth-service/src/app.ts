@@ -7,7 +7,7 @@ import Fastify from "fastify";
 import { errorMiddleware } from "./middlewares/ErrorMiddleware";
 import { PORT } from "./model/env";
 import { loggerConfig } from "./model/logger";
-import { InvalidCredentialError } from "./modules/auth/app.error";
+import { InvalidCredentialError } from "./modules/auth/auth.error";
 import { authModule } from "./modules/auth/auth.module";
 
 const DEFAULT_URL_PREFIX = "/api/v1";

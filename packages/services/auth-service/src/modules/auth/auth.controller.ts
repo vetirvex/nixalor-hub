@@ -7,7 +7,8 @@ class AuthController {
 
   login = async (request: FastifyRequest<{ Body: LoginBody }>, reply: FastifyReply) => {
     const { email, password } = request.body;
-    const user = await this.authService.login(email, password);
+    const data = await this.authService.login(email, password);
+    return reply.status(200).send(data);
   };
 
   register = async (
@@ -15,6 +16,8 @@ class AuthController {
     reply: FastifyReply
   ) => {
     const { email, password, name } = request.body;
+    const data = await this.authService.register(email, password, name);
+    return reply.status(201).send(data);
   };
 }
 

@@ -3,12 +3,12 @@ type ErrorParams = Record<string, unknown>;
 class ServiceError extends Error {
   public statusCode: number;
   public params: ErrorParams | null;
-  public type: string;
+  public code: string;
 
-  constructor(message: string, statusCode: number, type: string, params?: ErrorParams) {
+  constructor(message: string, statusCode: number, code: string, params?: ErrorParams) {
     super(message);
     this.statusCode = statusCode;
-    this.type = type;
+    this.code = code;
     this.params = params || null;
   }
 }
