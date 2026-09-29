@@ -1,0 +1,9 @@
+{
+  "name": "@nixalor/service-core",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "tsx": "4.22.4",
+    "typescript": "^5.8.2"
+  }
+}

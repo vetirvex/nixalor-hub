@@ -1,3 +1,4 @@
 ./logs
 .env.local
 devServerConfig.json
+node_modules
